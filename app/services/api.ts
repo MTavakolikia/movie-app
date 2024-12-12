@@ -16,7 +16,7 @@ export const authenticate = async () => {
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYTEyNThlZWMwNDhhMjgyYjkxMDUwMGZkOWMyYTU4NSIsIm5iZiI6MTY4ODk3MjA3OS42Mywic3ViIjoiNjRhYmFiMmZmYTc4Y2QwMTFjZmIyYjIyIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.bNunveyWVdjPQ8j7GY4pjT35XyxLPre5OruGwj-jt6g'
+            Authorization: `Bearer ${API_TOKEN}`,
         }
     };
     await fetch('https://api.themoviedb.org/3/authentication', options)

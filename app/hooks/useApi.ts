@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import axiosInstance from '../services/api';
-import { AxiosError } from 'axios';
 const useApi = (url: string, options = {}) => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
