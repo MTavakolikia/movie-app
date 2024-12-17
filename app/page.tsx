@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import MovieCard from "./components/MovieCard";
+import MovieCard from "../components/MovieCard";
 import { apiClient, authenticate } from "./services/api";
 import { Movie } from "./types/moveTypes";
 

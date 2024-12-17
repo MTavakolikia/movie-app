@@ -1,12 +1,18 @@
 import { motion } from "framer-motion";
-import { Movie } from "../types/moveTypes";
+import { Movie } from "../app/types/moveTypes";
+import { useRouter } from "next/navigation";
 
 export default function MovieCard({ movie }: { movie: Movie }) {
     const imgUrlPath = "https://image.tmdb.org/t/p/original";
+    const router = useRouter();
+    const handleMovieClick = async () => {
+        router.push(`/movies/${movie.id}`);
+    };
     return (
         <motion.div
             whileHover={{ scale: 0.95 }}
-            className="border rounded shadow-md p-4 hover:shadow-lg transition-shadow"
+            className="border rounded shadow-md cursor-pointer p-4 hover:shadow-lg transition-shadow"
+            onClick={() => handleMovieClick()}
         >
             {/* <Image
                 src="https://image.tmdb.org/t/p/original/nOoGIymGBNtA7AEN0B6nshSEQ1p.jpg"
