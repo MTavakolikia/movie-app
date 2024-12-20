@@ -11,8 +11,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     return (
         <motion.div
             whileHover={{ scale: 0.95 }}
-            className="border rounded shadow-md cursor-pointer p-4 hover:shadow-lg transition-shadow"
-            onClick={() => handleMovieClick()}
+            className="card w-96 bg-base-100 rounded-lg shadow-xl hover:scale-105 transition-transform duration-300 cursor-pointer" onClick={() => handleMovieClick()}
         >
             {/* <Image
                 src="https://image.tmdb.org/t/p/original/nOoGIymGBNtA7AEN0B6nshSEQ1p.jpg"
@@ -22,15 +21,23 @@ export default function MovieCard({ movie }: { movie: Movie }) {
                 height={300}
             /> */}
 
-            <img
-                src={`${imgUrlPath}${movie.backdrop_path}`}
-                alt={movie.title}
-                className="rounded mb-4 "
-                style={{ width: "500px", height: "250px" }}
-            />
-            <h3 className="text-lg font-bold mb-2">{movie.title}</h3>
-            <p className="text-sm text-gray-600 mb-1">Release Date: {movie.release_date}</p>
-            <p className="text-sm text-yellow-500">Rating: {movie.vote_average.toFixed(1)}</p>
-        </motion.div>
+            <figure>
+                <img
+                    src={`${imgUrlPath}${movie?.backdrop_path}`}
+                    alt={movie?.title}
+                    className="rounded w-full mx=[200px] object-cover"
+                />
+            </figure>
+            <div className="card-body">
+                <h2 className="card-title">{movie.title}</h2>
+                <p className="text-sm text-gray-600">{movie?.overview?.slice(0, 100)}...</p>
+                <div className="flex justify-between items-center mt-2">
+                    <span className="text-sm">Release Date: {movie.release_date}</span>
+                    <div className="badge badge-accent">⭐ {movie.vote_average.toFixed(1)}</div>
+                </div>
+            </div>        </motion.div>
+
+
+
     );
 }
