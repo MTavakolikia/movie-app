@@ -1,9 +1,30 @@
-export default function ThemeSwitcher() {
-  return (
+"use client";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
+export default function ThemeSwitcher() {
+  const { theme, setTheme } = useTheme();
+  const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    setIsChecked(theme === "dark");
+  }, [theme]);
+
+  const toggleTheme = () => {
+    const newTheme = isChecked ? "light" : "dark";
+    setTheme(newTheme);
+    setIsChecked(!isChecked);
+  };
+
+  return (
     <div className="flex-none">
       <label className="swap swap-rotate">
-        <input type="checkbox" data-toggle-theme="dark,light" />
+        <input
+          type="checkbox"
+          checked={isChecked}
+          onChange={toggleTheme}
+          aria-label="Toggle dark mode"
+        />
         <svg
           className="swap-on fill-current w-6 h-6"
           xmlns="http://www.w3.org/2000/svg"

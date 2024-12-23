@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./assets/styles/globals.css";
 import Navbar from "@/components/navbar";
+import { ThemeProvider } from "next-themes";
 
 
 export const metadata: Metadata = {
@@ -17,8 +18,10 @@ export default function RootLayout({
     <html lang="en">
       <body
       >
-        <Navbar />
-        {children}
+        <ThemeProvider>
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
