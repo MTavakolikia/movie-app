@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Movie } from "../app/types/moveTypes";
+import { Movie } from "../types/moveTypes";
 import { useRouter } from "next/navigation";
 
 export default function MovieCard({ movie }: { movie: Movie }) {

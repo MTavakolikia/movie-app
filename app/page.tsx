@@ -1,9 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import MovieCard from "../components/MovieCard";
+import MovieCard from "./_components/MovieCard";
 import { apiClient, authenticate } from "./services/api";
-import { Movie } from "./types/moveTypes";
-import ThemeSwitcher from "@/components/theme-switcher";
+import MovieSlider from "./_components/MovieSlider";
 
 
 export default function Home() {
@@ -19,7 +18,8 @@ export default function Home() {
   };
   return (
     <div className="container mx-auto p-4">
-      {/* <ThemeSwitcher /> */}
+      {<MovieSlider movies={movies} />}
+
       <h1 className="text-3xl font-bold mb-6 text-center">Top Movies</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-3">
         {movies.map((movie, index) => (
