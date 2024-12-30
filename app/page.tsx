@@ -1,5 +1,6 @@
 import MovieCard from "@/components/MovieCard";
 import { apiClient } from "@/services/api";
+import { Movie } from "@/types/moveTypes";
 
 export const fetchPopularMovies = async (page = 1) => {
   const response = await apiClient.get("/discover/movie", {
@@ -22,7 +23,7 @@ export default async function Home() {
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6 text-center">Top Movies</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-3">
-        {movies.map((movie, index) => (
+        {movies.map((movie: Movie, index: number) => (
           <MovieCard key={index} movie={movie} />
         ))}
       </div>

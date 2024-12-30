@@ -1,5 +1,5 @@
 import Results from "@/components/Results";
-import { API_TOKEN, apiClient } from "@/services/api";
+import { apiClient } from "@/services/api";
 
 export const fetchSearchedMovie = async (page = 1, searchParam = "") => {
   const response = await apiClient.get("/search/movie", {
