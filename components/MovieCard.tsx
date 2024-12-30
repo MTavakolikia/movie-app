@@ -1,3 +1,6 @@
+"use client";
+
+
 import { motion } from "framer-motion";
 import { Movie } from "../types/moveTypes";
 import { useRouter } from "next/navigation";
@@ -11,7 +14,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     return (
         <motion.div
             whileHover={{ scale: 0.95 }}
-            className="card w-96 bg-base-100 rounded-lg shadow-xl hover:scale-105 transition-transform duration-300 cursor-pointer" onClick={() => handleMovieClick()}
+            className="card w-[100%] sm:w-80 lg:w-96 bg-base-100 rounded-lg shadow-xl hover:scale-105 transition-transform duration-300 cursor-pointer" onClick={() => handleMovieClick()}
         >
             {/* <Image
                 src="https://image.tmdb.org/t/p/original/nOoGIymGBNtA7AEN0B6nshSEQ1p.jpg"
@@ -20,7 +23,6 @@ export default function MovieCard({ movie }: { movie: Movie }) {
                 width={500}
                 height={300}
             /> */}
-
             <figure>
                 <img
                     src={`${imgUrlPath}${movie?.backdrop_path}`}
@@ -35,7 +37,8 @@ export default function MovieCard({ movie }: { movie: Movie }) {
                     <span className="text-sm">Release Date: {movie.release_date}</span>
                     <div className="badge badge-accent">⭐ {movie.vote_average.toFixed(1)}</div>
                 </div>
-            </div>        </motion.div>
+            </div>
+        </motion.div>
 
 
 

@@ -1,4 +1,3 @@
-// import { Navigation, Autoplay } from 'swiper';
 "use client"
 import 'swiper/css';
 import 'swiper/css/navigation';

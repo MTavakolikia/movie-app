@@ -3,16 +3,75 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #ededed;
+  --foreground: #0F1729;
+  --textinputcolor: #0F1729;
+  /* "--rounded-box": "1rem",          // border radius rounded-box utility class, used in card and other large boxes
+"--rounded-btn": "0.5rem",        // border radius rounded-btn utility class, used in buttons and similar element
+"--rounded-badge": "1.9rem",      // border radius rounded-badge utility class, used in badges and similar
+"--animation-btn": "0.25s",       // duration of animation when you click on button
+"--animation-input": "0.2s",      // duration of animation for inputs like checkbox, toggle, radio, etc
+"--btn-focus-scale": "0.95",      // scale transform of button when you focus on it
+"--border-btn": "1px",            // border width of buttons
+"--tab-border": "1px",            // border width of tabs
+"--tab-radius": "0.5rem",         // border radius of tabs */
+  /* tab
+  --tab-border // border width of tab
+  --tab-border-color // border color of tab
+  --tab-padding // horizontal padding of tab
+  --tab-bg // background color of tabs-lifted
+  --tab-radius // border radius of tabs-lifted
+  --tab-corner-bg // background color of tabs-lifted corner
+  --circle-pos // position of circle in the corner of tabs-lifted
+  --tab-grad // radial-gradient size in the corner of tabs-lifted
+
+countdown
+  --value // value of countdown
+
+radial-progress
+  --value // value of progress circle
+  --size // size of progress circle
+  --thickness // thickness of progress circle
+
+tooltip
+  --tooltip-color // background color of tooltip
+  --tooltip-text-color // text color of tooltip
+  --tooltip-offset // offset of tooltip from target element
+  --tooltip-tail // size of tooltip tail
+  --tooltip-tail-offset // offset of tooltip tail from target element
+
+checkbox
+  --chkbg // background color of checkbox
+  --chkfg // foreground color of checkbox
+
+toggle
+  --tglbg // background color of toggle
+  --handleoffset // offset of toggle handle
+
+range
+  --filler-size // size of range thumb
+  --filler-offset // offset of range thumb
+  --range-shdw // shadow color of range thumb
+
+glass
+  --glass-blur // blur value of glass effect
+  --glass-opacity // opacity of glass effect
+  --glass-border-opacity // opacity of glass border
+  --glass-reflex-degree // degree of glass reflex
+  --glass-reflex-opacity // opacity of glass reflex
+  --glass-text-shadow-opacity // opacity of text shadow */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme='dark'] {
+  --background: #0F1729;
+  --foreground: #ededed;
+  --textinputcolor: #ededed;
 }
+
+input {
+  color: var(--textinputcolor) !important;
+}
+
 
 body {
   color: var(--foreground);
