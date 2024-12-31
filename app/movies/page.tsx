@@ -1,5 +1,5 @@
 import MovieSlider from "@/components/MovieSlider";
-import { fetchPopularMovies } from "../page";
+import { fetchPopularMovies } from "@/services/popularMovies";
 
 export default async function page() {
     const data = await fetchPopularMovies();

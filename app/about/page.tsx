@@ -26,13 +26,14 @@ export default function WelcomePage() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6 }}
-            > <div className='flex items-center justify-center mb-10'>
+            >
+                <div className="flex items-center justify-center mb-10">
                     <label className="swap swap-flip text-5xl">
                         <input type="checkbox" />
                         <div className="swap-on">😈</div>
                         <div className="swap-off">😇</div>
                     </label>
-                    <h1 className="text-5xl font-bold">Hello there I'm Mohammad</h1>
+                    <h1 className="text-5xl font-bold">Hello there I&#39;m Mohammad</h1>
                 </div>
                 <h4 className="text-3xl font-bold mb-4">🎬 Welcome to Movie App!</h4>
 
@@ -48,38 +49,32 @@ export default function WelcomePage() {
                     {
                         title: 'Search Movies',
                         description: 'Find movies by title, genre, or keyword effortlessly.',
-                        icon: <MdOutlineContentPasteSearch />
-                        ,
+                        icon: <MdOutlineContentPasteSearch />,
                     },
                     {
                         title: 'Dynamic Movie Details',
                         description: 'Dive into detailed pages with synopses, ratings, and release dates.',
-                        icon: <BiSolidMessageSquareDetail />
-                        ,
+                        icon: <BiSolidMessageSquareDetail />,
                     },
                     {
                         title: 'TheMovieDB Integration',
                         description: 'Powered by the reliable and rich TheMovieDB API.',
-                        icon: <SiThemoviedatabase />
-                        ,
+                        icon: <SiThemoviedatabase />,
                     },
                     {
                         title: 'Smooth Animations',
                         description: 'Enjoy fluid and engaging transitions using Framer Motion.',
-                        icon: <MdOutlineAnimation />
-                        ,
+                        icon: <MdOutlineAnimation />,
                     },
                     {
                         title: 'Dark & Light Modes',
                         description: 'Automatic theme adjustment for your preference.',
-                        icon: <CgDarkMode />
-
+                        icon: <CgDarkMode />,
                     },
                     {
                         title: 'Optimized Performance',
                         description: 'Next.js ensures fast loading and server-side rendering.',
-                        icon: <GrOptimize />
-
+                        icon: <GrOptimize />,
                     },
                 ].map((feature, index) => (
                     <motion.div
@@ -88,12 +83,6 @@ export default function WelcomePage() {
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: 'spring', stiffness: 300 }}
                     >
-
-                        {/* <div className="p-4">
-                            <h2 className="text-xl font-bold">{feature.title}</h2>
-                            <p className="text-sm mt-2">{feature.description}</p>
-                        </div> */}
-
                         <div className="stats shadow">
                             <div className="stat">
                                 <div className="stat-figure text-secondary">

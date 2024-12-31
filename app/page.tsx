@@ -1,19 +1,8 @@
 import MovieCard from "@/components/MovieCard";
-import { apiClient } from "@/services/api";
+import { fetchPopularMovies } from "@/services/popularMovies";
 import { Movie } from "@/types/moveTypes";
 
-export const fetchPopularMovies = async (page = 1) => {
-  const response = await apiClient.get("/discover/movie", {
-    params: {
-      include_adult: false,
-      include_video: false,
-      language: "en-US",
-      page,
-      sort_by: "popularity.desc",
-    },
-  });
-  return response.data;
-};
+
 
 export default async function Home() {
   const data = await fetchPopularMovies();
