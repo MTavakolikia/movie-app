@@ -14,6 +14,7 @@ export const fetchPopularMovies = async (page: number = 1): Promise<any> => {
         });
         return response.data;
     } catch (error) {
+        console.log(error);
         throw new Error("Failed to fetch popular movies");
     }
 };
