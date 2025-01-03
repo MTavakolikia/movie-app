@@ -7,25 +7,18 @@ interface Params {
     id: string;
 }
 
-export default async function MovieDetails({ params }: { params: Params }) {
-    const { id } = params;
+export default async function MovieDetails({
+    params,
+}: {
+    params: Promise<Params>
+}) {
+    const { id } = await params;
 
     let movie: Movie | null = null;
     let movieGallery: IMovieGallery = { backdrops: [] };
 
     try {
         movie = await fetchMovieDetails(id);
-    } catch (err) {
-        console.error("Error fetching movie details:", err);
-        return (
-            <div className="container mx-auto p-4">
-                <h1 className="text-2xl font-bold text-red-500">Error</h1>
-                <p className="text-lg">Failed to load movie details. Please try again later.</p>
-            </div>
-        );
-    }
-
-    try {
         movieGallery = await fetchMovieImageById(id);
     } catch (err) {
         console.error("Error fetching movie details:", err);
@@ -36,6 +29,7 @@ export default async function MovieDetails({ params }: { params: Params }) {
             </div>
         );
     }
+
 
     return (
         <div className="flex ">
