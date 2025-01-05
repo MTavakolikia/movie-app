@@ -29,6 +29,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
                     alt={movie?.title}
                     className="rounded w-full mx=[200px] object-cover"
                 />
+
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{movie.title}</h2>

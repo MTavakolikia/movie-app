@@ -15,8 +15,41 @@ export default function WelcomePage() {
         { name: 'Next.js 15', icon: '/icons/nextjs.svg' },
         { name: 'TypeScript', icon: '/icons/typescript.svg' },
         { name: 'Tailwind CSS', icon: '/icons/tailwindcss.svg' },
+        { name: 'Daisy UI', icon: '/icons/daisy-ui.svg' },
         { name: 'Framer Motion', icon: '/icons/framer-motion.svg' },
     ];
+    const features = [
+        {
+            title: 'Search Movies',
+            description: 'Find movies by title, genre, or keyword effortlessly.',
+            icon: <MdOutlineContentPasteSearch size={42} />,
+        },
+        {
+            title: 'Dynamic Movie Details',
+            description: 'Dive into detailed pages with synopses, ratings, and release dates.',
+            icon: <BiSolidMessageSquareDetail size={42} />,
+        },
+        {
+            title: 'TheMovieDB Integration',
+            description: 'Powered by the reliable and rich TheMovieDB API.',
+            icon: <SiThemoviedatabase size={42} />,
+        },
+        {
+            title: 'Smooth Animations',
+            description: 'Enjoy fluid and engaging transitions using Framer Motion.',
+            icon: <MdOutlineAnimation size={42} />,
+        },
+        {
+            title: 'Dark & Light Modes',
+            description: 'Automatic theme adjustment for your preference.',
+            icon: <CgDarkMode size={42} />,
+        },
+        {
+            title: 'Optimized Performance',
+            description: 'Next.js ensures fast loading and server-side rendering.',
+            icon: <GrOptimize size={42} />,
+        },
+    ]
 
     return (
         <div className="flex flex-col items-center justify-center p-10  text-white">
@@ -44,52 +77,21 @@ export default function WelcomePage() {
             </motion.div>
 
             {/* Features Section */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2gap-8 mt-12">
-                {[
-                    {
-                        title: 'Search Movies',
-                        description: 'Find movies by title, genre, or keyword effortlessly.',
-                        icon: <MdOutlineContentPasteSearch />,
-                    },
-                    {
-                        title: 'Dynamic Movie Details',
-                        description: 'Dive into detailed pages with synopses, ratings, and release dates.',
-                        icon: <BiSolidMessageSquareDetail />,
-                    },
-                    {
-                        title: 'TheMovieDB Integration',
-                        description: 'Powered by the reliable and rich TheMovieDB API.',
-                        icon: <SiThemoviedatabase />,
-                    },
-                    {
-                        title: 'Smooth Animations',
-                        description: 'Enjoy fluid and engaging transitions using Framer Motion.',
-                        icon: <MdOutlineAnimation />,
-                    },
-                    {
-                        title: 'Dark & Light Modes',
-                        description: 'Automatic theme adjustment for your preference.',
-                        icon: <CgDarkMode />,
-                    },
-                    {
-                        title: 'Optimized Performance',
-                        description: 'Next.js ensures fast loading and server-side rendering.',
-                        icon: <GrOptimize />,
-                    },
-                ].map((feature, index) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 my-12">
+                {features.map((feature, index) => (
                     <motion.div
                         key={index}
-                        className="card bg-white text-gray-800 shadow-lg rounded-lg overflow-hidden"
+                        className="card  text-gray-800 shadow-lg rounded-lg overflow-hidden"
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: 'spring', stiffness: 300 }}
                     >
                         <div className="stats shadow">
                             <div className="stat">
+                                <div className="stat-title">{feature.title}</div>
+                                <div className="stat-value text-sm">{feature.description}</div>
                                 <div className="stat-figure text-secondary">
                                     {feature.icon}
                                 </div>
-                                <div className="stat-title">{feature.title}</div>
-                                <div className="stat-value text-sm">{feature.description}</div>
                             </div>
                         </div>
                     </motion.div>
@@ -98,11 +100,11 @@ export default function WelcomePage() {
 
             {/* Technologies Section */}
             <div className=" bg-gray-800 p-4 rounded-lg shadow-lg">
-                <div className="flex space-x-4">
+                <div className="flex items-center space-x-6">
                     {technologies.map((tech, index) => (
                         <motion.div
                             key={index}
-                            className="tooltip"
+                            className="tooltip "
                             whileHover={{ scale: 1.2 }}
                             transition={{ type: 'spring', stiffness: 300 }}
                         >
