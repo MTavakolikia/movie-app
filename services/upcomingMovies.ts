@@ -1,10 +1,10 @@
 import { apiClient } from "./api";
 import { PopularMovie } from "@/types/popularMoviesTypes";
 
-export const fetchPopularMovies = async (page: number = 1): Promise<PopularMovie[]> => {
+export const fetchUpcomingMovies = async (page: number = 1): Promise<PopularMovie[]> => {
 
     try {
-        const response = await apiClient.get("/movie/popular", {
+        const response = await apiClient.get("/movie/upcoming", {
             params: {
                 // include_adult: false,
                 // include_video: false,

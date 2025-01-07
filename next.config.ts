@@ -1,23 +1,13 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+module.exports = {
   images: {
-    domains: ["image.tmdb.org"],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'image.tmdb.org',
-        pathname: '/t/p/**',
+        hostname: "image.tmdb.org",
         port: '',
+        pathname: "/t/p/**",
         search: '',
       },
     ],
   },
-  reactStrictMode: false,
-  webpack: (config) => {
-    config.resolve.fallback = { fs: false };
-    return config;
-  }
-};
-
-export default nextConfig;
+}

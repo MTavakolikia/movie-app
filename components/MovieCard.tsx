@@ -2,10 +2,10 @@
 
 
 import { motion } from "framer-motion";
-import { Movie } from "../types/moveTypes";
 import { useRouter } from "next/navigation";
+import { PopularMovie } from "@/types/popularMoviesTypes";
 
-export default function MovieCard({ movie }: { movie: Movie }) {
+export default function MovieCard({ movie }: { movie: PopularMovie }) {
     const imgUrlPath = "https://image.tmdb.org/t/p/original";
     const router = useRouter();
     const handleMovieClick = async () => {
@@ -29,6 +29,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
                     alt={movie?.title}
                     className="rounded w-full mx=[200px] object-cover"
                 />
+
 
             </figure>
             <div className="card-body">

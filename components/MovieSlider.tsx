@@ -2,16 +2,20 @@
 import 'swiper/css';
 import 'swiper/css/navigation';
 import "swiper/css/autoplay"
-import { Movie } from '../types/moveTypes';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Controller, EffectCards, Mousewheel, Navigation } from 'swiper/modules';
+import { PopularMovie } from '@/types/popularMoviesTypes';
+import { useRouter } from 'next/navigation';
 
 type MovieSliderProps = {
-    movies: Movie[];
+    movies: PopularMovie[];
 };
 
 const MovieSlider: React.FC<MovieSliderProps> = ({ movies }) => {
-
+    const router = useRouter();
+    const handleMovieClick = async (id: number) => {
+        router.push(`/movies/${id}`);
+    };
     return (
         <Swiper
             modules={[Controller, Navigation, Autoplay, EffectCards, Mousewheel]}
@@ -28,7 +32,7 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies }) => {
         >
             {movies.map((movie) => (
                 <SwiperSlide key={movie.id}>
-                    <div className="movie-card">
+                    <div className="movie-card cursor-pointer" onClick={() => handleMovieClick(movie.id)}>
                         <img
                             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                             alt={movie.title}
