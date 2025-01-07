@@ -9,7 +9,7 @@ const Footer = () => {
                 <Link href={"/about"} className="link link-hover">About</Link>
                 <Link href={"/contact"} className="link link-hover">Contact</Link>
                 <Link href={"/movies"} className="link link-hover">Movies</Link>
-                <a target="_blank" href="https://mtk-portfolio-gamma.vercel.app" className="link link-hover">My Portfolio</a>
+                <a target="_blank" href="https://mtk-portfolio2.vercel.app/" className="link link-hover">My Portfolio</a>
             </nav>
             <nav>
                 <div className="grid grid-flow-col gap-4 text-2xl">
