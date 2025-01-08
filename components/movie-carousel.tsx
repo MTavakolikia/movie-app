@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface Image {
     aspect_ratio: number;
     file_path: string;
@@ -16,9 +18,12 @@ export default function MovieCarousel({ images }: IImages) {
                     id={`slide${index}`}
                     className="carousel-item relative w-full h-[85vh]"
                 >
-                    <img
-                        src={`https://image.tmdb.org/t/p/original${image.file_path}`}
+
+                    <Image
+                        src={`https://image.tmdb.org/t/p/original/${image.file_path}`}
                         alt={`Slide ${index + 1}`}
+                        width={500}
+                        height={300}
                         className="w-full  object-contain"
                     />
                     <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">

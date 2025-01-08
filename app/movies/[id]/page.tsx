@@ -1,6 +1,7 @@
 import ImageGalleryModal from "@/components/image-gallery-modal";
 import { fetchMovieDetails, fetchMovieImageById } from "@/services/movieById";
 import { IMovieGallery, Movie } from "@/types/moveTypes";
+import Image from "next/image";
 import { FaStar } from "react-icons/fa6";
 
 interface Params {
@@ -37,9 +38,13 @@ export default async function MovieDetails({
                 <div className="absolute top-5 right-5">
                     <ImageGalleryModal movieGallery={movieGallery.backdrops} />
                 </div>
-                <img
-                    src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
+
+                <Image
+                    src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path || movie.poster_path
+                        }`}
                     alt={`Poster for ${movie?.title}`}
+                    width={500}
+                    height={300}
                     className=" object-contain h-full mx-auto"
                 />
             </div>
@@ -65,10 +70,12 @@ export default async function MovieDetails({
                             {movie?.production_companies?.map(
                                 (item) =>
                                     item.logo_path && (
-                                        <img
+                                        <Image
                                             key={item.id}
-                                            src={`https://image.tmdb.org/t/p/original${item.logo_path}`}
-                                            alt={item.name}
+                                            src={`https://image.tmdb.org/t/p/original/${item.logo_path}`}
+                                            alt={movie?.title}
+                                            width={16}
+                                            height={16}
                                             className="w-16 h-16 p-1 object-contain rounded-lg bg-white shadow-md bg-opacity-40  border border-white"
                                         />
                                     )

@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Controller, EffectCards, Mousewheel, Navigation } from 'swiper/modules';
 import { PopularMovie } from '@/types/popularMoviesTypes';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 type MovieSliderProps = {
     movies: PopularMovie[];
@@ -33,9 +34,12 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies }) => {
             {movies.map((movie) => (
                 <SwiperSlide key={movie.id}>
                     <div className="movie-card cursor-pointer" onClick={() => handleMovieClick(movie.id)}>
-                        <img
-                            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                            alt={movie.title}
+                        <Image
+                            src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path || movie.poster_path
+                                }`}
+                            alt={movie?.title}
+                            width={500}
+                            height={300}
                             className="rounded-lg"
                         />
                         <h3 className="text-lg font-bold mt-2">{movie.title}</h3>
