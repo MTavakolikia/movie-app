@@ -108,7 +108,8 @@ export default function WelcomePage() {
                             whileHover={{ scale: 1.2 }}
                             transition={{ type: 'spring', stiffness: 300 }}
                         >
-                            <Image src={tech.icon} alt={tech.name} width={40} height={40} title={tech.name} />
+                            <Image src={tech.icon} alt={tech.name} width={40} height={40} title={tech.name} unoptimized={process.env.NODE_ENV === 'development'}
+                            />
                         </motion.div>
                     ))}
                 </div>

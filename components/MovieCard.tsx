@@ -22,6 +22,7 @@ export default function MovieCard({ movie }: { movie: PopularMovie }) {
                 width={500}
                 height={300}
                 className="rounded w-full mx=[200px] object-cover"
+                unoptimized={process.env.NODE_ENV === 'development'}
             />
             <div className="card-body">
                 <h2 className="card-title">{movie.title}</h2>

@@ -46,6 +46,8 @@ export default async function MovieDetails({
                     width={500}
                     height={300}
                     className=" object-contain h-full mx-auto"
+                    unoptimized={process.env.NODE_ENV === 'development'}
+
                 />
             </div>
 
@@ -62,7 +64,7 @@ export default async function MovieDetails({
                     </div>
                     <p className="text-lg mt-4">{movie?.overview}</p>
                     <div className="text-yellow-500 flex items-center gap-2">
-                        <FaStar /> {movie?.vote_average}/10 <span>({movie?.vote_count} votes)</span>
+                        <FaStar /> {movie?.vote_average.toFixed(1)}/10 <span>({movie?.vote_count} votes)</span>
                     </div>
                     <div className="mt-2">
                         <p className="font-bold">Budget: ${movie?.budget}</p>
@@ -77,6 +79,8 @@ export default async function MovieDetails({
                                             width={64}
                                             height={64}
                                             className="w-16 h-16 p-1 object-contain rounded-lg bg-white shadow-md bg-opacity-40  border border-white"
+                                            unoptimized={process.env.NODE_ENV === 'development'}
+
                                         />
                                     )
                             )}

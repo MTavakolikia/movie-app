@@ -25,6 +25,7 @@ export default function MovieCarousel({ images }: IImages) {
                         width={500}
                         height={300}
                         className="w-full  object-contain"
+                        unoptimized={process.env.NODE_ENV === 'development'}
 
                     />
                     <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">

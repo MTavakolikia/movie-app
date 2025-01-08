@@ -39,6 +39,8 @@ export default function page() {
                     width={500}
                     height={300}
                     className="rounded-lg"
+                    unoptimized={process.env.NODE_ENV === 'development'}
+
                 />
             </div>
         </div>

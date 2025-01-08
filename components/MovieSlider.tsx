@@ -41,6 +41,8 @@ const MovieSlider: React.FC<MovieSliderProps> = ({ movies }) => {
                             width={600}
                             height={400}
                             className="rounded-lg"
+                            unoptimized={process.env.NODE_ENV === 'development'}
+
                         />
                         <h3 className="text-lg font-bold mt-2">{movie.title}</h3>
                         <p className="text-sm text-gray-500">{movie.release_date}</p>
