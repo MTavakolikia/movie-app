@@ -1,8 +1,10 @@
 import ImageGalleryModal from "@/components/image-gallery-modal";
 import MovieSlider from "@/components/MovieSlider";
-import { fetchMovieDetails, fetchMovieImageById, fetchRecommendationsById } from "@/services/movieById";
+import ReviewModal from "@/components/review-modal";
+import { fetchMovieDetails, fetchMovieImageById, fetchRecommendationsById, fetchReviewsById } from "@/services/movieById";
 import { IMovieGallery, Movie } from "@/types/moveTypes";
 import { PopularMovie } from "@/types/popularMoviesTypes";
+import { Reviews } from "@/types/reviewTypes";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa6";
 
@@ -20,12 +22,14 @@ export default async function MovieDetails({
     let movie: Movie | null = null;
     let recommendations: PopularMovie[] | null = null;
     let movieGallery: IMovieGallery = { backdrops: [] };
+    let reviews: Reviews | null = null
 
     try {
         movie = await fetchMovieDetails(id);
         movieGallery = await fetchMovieImageById(id);
         recommendations = await fetchRecommendationsById(id);
-        console.log(recommendations);
+        reviews = await fetchReviewsById(id)
+        console.log(reviews);
 
     } catch (err) {
         console.error("Error fetching movie details:", err);
@@ -43,6 +47,9 @@ export default async function MovieDetails({
             <div className="relative w-full h-[88vh] rounded">
                 <div className="absolute top-5 right-5">
                     <ImageGalleryModal movieGallery={movieGallery.backdrops} />
+                </div>
+                <div className="absolute top-20 right-5">
+                    <ReviewModal reviews={reviews} />
                 </div>
 
                 <Image
