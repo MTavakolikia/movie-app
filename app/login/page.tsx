@@ -1,3 +1,4 @@
+import Image from "next/image";
 
 export default function page() {
     return (
@@ -32,6 +33,13 @@ export default function page() {
                         </div>
                     </form>
                 </div>
+                <Image
+                    src="https://images.unsplash.com/photo-1635805737707-575885ab0820"
+                    alt="Test Image"
+                    width={500}
+                    height={300}
+                    className="rounded-lg"
+                />
             </div>
         </div>
     )
