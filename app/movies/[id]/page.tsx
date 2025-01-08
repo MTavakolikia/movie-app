@@ -1,6 +1,8 @@
 import ImageGalleryModal from "@/components/image-gallery-modal";
-import { fetchMovieDetails, fetchMovieImageById } from "@/services/movieById";
+import MovieSlider from "@/components/MovieSlider";
+import { fetchMovieDetails, fetchMovieImageById, fetchRecommendationsById } from "@/services/movieById";
 import { IMovieGallery, Movie } from "@/types/moveTypes";
+import { PopularMovie } from "@/types/popularMoviesTypes";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa6";
 
@@ -16,11 +18,15 @@ export default async function MovieDetails({
     const { id } = await params;
 
     let movie: Movie | null = null;
+    let recommendations: PopularMovie[] | null = null;
     let movieGallery: IMovieGallery = { backdrops: [] };
 
     try {
         movie = await fetchMovieDetails(id);
         movieGallery = await fetchMovieImageById(id);
+        recommendations = await fetchRecommendationsById(id);
+        console.log(recommendations);
+
     } catch (err) {
         console.error("Error fetching movie details:", err);
         return (
@@ -32,7 +38,7 @@ export default async function MovieDetails({
     }
 
 
-    return (
+    return (<div>
         <div className="flex ">
             <div className="relative w-full h-[88vh] rounded">
                 <div className="absolute top-5 right-5">
@@ -47,7 +53,7 @@ export default async function MovieDetails({
                     height={300}
                     className=" object-contain h-full mx-auto"
                     unoptimized={process.env.NODE_ENV === 'development'}
-
+                    priority
                 />
             </div>
 
@@ -88,6 +94,13 @@ export default async function MovieDetails({
                     </div>
                 </div>
             </div>
+
         </div>
+        <div className="container mx-auto mt-5">
+            <h1 className="text-3xl font-bold mb-6 text-center">❤️ Recommendation Movies</h1>
+            {<MovieSlider movies={recommendations} />}
+        </div>
+    </div>
+
     );
 }
