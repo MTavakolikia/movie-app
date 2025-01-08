@@ -20,11 +20,12 @@ export default function MovieCarousel({ images }: IImages) {
                 >
 
                     <Image
-                        src={`https://image.tmdb.org/t/p/original/${image.file_path}`}
+                        src={image.file_path ? `https://image.tmdb.org/t/p/original/${image.file_path}` : '/default-image.png'}
                         alt={`Slide ${index + 1}`}
                         width={500}
                         height={300}
                         className="w-full  object-contain"
+
                     />
                     <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                         <a

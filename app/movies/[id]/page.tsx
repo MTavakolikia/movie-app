@@ -40,8 +40,8 @@ export default async function MovieDetails({
                 </div>
 
                 <Image
-                    src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path || movie.poster_path
-                        }`}
+                    src={movie.poster_path ? `https://image.tmdb.org/t/p/original/${movie.poster_path || movie.backdrop_path
+                        }` : '/default-image.png'}
                     alt={`Poster for ${movie?.title}`}
                     width={500}
                     height={300}
@@ -72,10 +72,10 @@ export default async function MovieDetails({
                                     item.logo_path && (
                                         <Image
                                             key={item.id}
-                                            src={`https://image.tmdb.org/t/p/original/${item.logo_path}`}
+                                            src={item.logo_path ? `https://image.tmdb.org/t/p/original/${item.logo_path}` : '/default-image.png'}
                                             alt={movie?.title}
-                                            width={16}
-                                            height={16}
+                                            width={64}
+                                            height={64}
                                             className="w-16 h-16 p-1 object-contain rounded-lg bg-white shadow-md bg-opacity-40  border border-white"
                                         />
                                     )
