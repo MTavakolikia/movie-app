@@ -1,4 +1,3 @@
-import AdvanceSearch from "@/components/search/AdvanceSearch";
 import Carousel from "@/components/carousel";
 import MovieCard from "@/components/MovieCard";
 import { fetchPopularMovies } from "@/services/popularMovies";

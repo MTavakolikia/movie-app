@@ -8,10 +8,11 @@ import { genres } from '@/constants/genres';
 import { languages } from '@/constants/languages';
 import { sortOptions } from '@/constants/sortOptions';
 import { initialFilterValues } from '@/constants/initialFilterValues';
+import { PopularMovie } from '@/types/popularMoviesTypes';
 
 const AdvanceSearch = () => {
     const [filters, setFilters] = useState(initialFilterValues);
-    const [results, setResults] = useState<any[]>([]);
+    const [results, setResults] = useState<PopularMovie[]>([]);
     const [isLoading, setIsLoading] = useState(false);
 
 
