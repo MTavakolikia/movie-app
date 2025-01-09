@@ -43,8 +43,8 @@ export default function ReviewModal({ reviews }: { reviews: Reviews }) {
                                                                 <Image
                                                                     src={`https://image.tmdb.org/t/p/original${review.author_details.avatar_path}`}
                                                                     alt={review.author}
-                                                                    width={64}
-                                                                    height={64}
+                                                                    width={48}
+                                                                    height={48}
                                                                     className="rounded-full"
                                                                     unoptimized={process.env.NODE_ENV === 'development'}
                                                                 />
@@ -60,15 +60,8 @@ export default function ReviewModal({ reviews }: { reviews: Reviews }) {
                                                         </p>
                                                     </div>
                                                 </div>
-
-
-
-
                                                 <p className="my-4 text-gray-700">{review.content}</p>
-
                                                 <div className=" text-sm w-full text-gray-500 flex items-center justify-between">
-
-
                                                     <p>Date: {new Date(review.created_at).toLocaleDateString()}</p>
                                                     <div>
                                                         {review.author_details.rating &&

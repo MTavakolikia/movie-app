@@ -29,12 +29,11 @@ export default async function MovieDetails({
         movieGallery = await fetchMovieImageById(id);
         recommendations = await fetchRecommendationsById(id);
         reviews = await fetchReviewsById(id)
-        console.log(reviews);
 
     } catch (err) {
         console.error("Error fetching movie details:", err);
         return (
-            <div className="container mx-auto p-4">
+            <div className="container mx-auto p-4 flex items-center justify-center h-[50vh] text-center">
                 <h1 className="text-2xl font-bold text-red-500">Error</h1>
                 <p className="text-lg">Failed to load movie details. Please try again later.</p>
             </div>
@@ -48,9 +47,12 @@ export default async function MovieDetails({
                 <div className="absolute top-5 right-5">
                     <ImageGalleryModal movieGallery={movieGallery.backdrops} />
                 </div>
-                <div className="absolute top-20 right-5">
-                    <ReviewModal reviews={reviews} />
-                </div>
+                {reviews.length > 0 &&
+                    <div className="absolute top-20 right-5">
+                        <ReviewModal reviews={reviews} />
+                    </div>
+                }
+
 
                 <Image
                     src={movie.poster_path ? `https://image.tmdb.org/t/p/original/${movie.poster_path || movie.backdrop_path
@@ -103,7 +105,7 @@ export default async function MovieDetails({
             </div>
 
         </div>
-        <div className="container mx-auto mt-5">
+        <div className="container mx-auto my-10">
             <h1 className="text-3xl font-bold mb-6 text-center">❤️ Recommendation Movies</h1>
             {<MovieSlider movies={recommendations} />}
         </div>

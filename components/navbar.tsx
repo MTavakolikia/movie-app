@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ThemeSwitcher from "./theme-switcher";
-import SearchBox from "./SearchBox";
+import SearchBox from "./search/SearchBox";
 import { IoHomeOutline } from "react-icons/io5";
 import { BiCameraMovie } from "react-icons/bi";
 import { IoMdInformationCircleOutline } from "react-icons/io";

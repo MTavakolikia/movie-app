@@ -104,11 +104,12 @@ export default function WelcomePage() {
                     {technologies.map((tech, index) => (
                         <motion.div
                             key={index}
-                            className="tooltip "
+                            data-tip={tech.name}
+                            className="tooltip  tooltip-top"
                             whileHover={{ scale: 1.2 }}
                             transition={{ type: 'spring', stiffness: 300 }}
                         >
-                            <Image src={tech.icon} alt={tech.name} width={40} height={40} title={tech.name} unoptimized={process.env.NODE_ENV === 'development'}
+                            <Image src={tech.icon} alt={tech.name} width={40} height={40} unoptimized={process.env.NODE_ENV === 'development'}
                             />
                         </motion.div>
                     ))}
