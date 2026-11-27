@@ -79,7 +79,12 @@ export default function Carousel<T>({ items, renderItem, slideClassName, ariaLab
 
   return (
     <div className={cn("relative", className)}>
-      {navigation && <div className="page-px">{navigation({ ...bounds, prev: () => page(-1), next: () => page(1) })}</div>}
+      {/* The render prop receives event handlers only — it never invokes
+          them synchronously, but react-hooks/refs cannot prove that. */}
+      {navigation && (
+        // eslint-disable-next-line react-hooks/refs -- handlers are deferred to click events
+        <div className="page-px">{navigation({ ...bounds, prev: () => page(-1), next: () => page(1) })}</div>
+      )}
       <Swiper
         modules={[FreeMode, A11y, Keyboard]}
         freeMode={{ enabled: true }}

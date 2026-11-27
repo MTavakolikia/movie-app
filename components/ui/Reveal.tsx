@@ -25,8 +25,9 @@ export default function Reveal({ children, className }: RevealProps) {
     const element = ref.current;
     if (!element) return;
     if (typeof IntersectionObserver === "undefined") {
-      setInView(true);
-      return;
+      // Very old browsers: show everything, just after paint.
+      const frame = window.requestAnimationFrame(() => setInView(true));
+      return () => window.cancelAnimationFrame(frame);
     }
     const observer = new IntersectionObserver(
       ([entry]) => {
