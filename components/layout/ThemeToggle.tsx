@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { cn } from "@/lib/cn";
+import { useIsClient } from "@/lib/hooks/useIsClient";
 
 interface ThemeToggleProps {
   /** Sit on hero artwork (light-on-dark) instead of the page surface. */
@@ -14,11 +14,7 @@ interface ThemeToggleProps {
 /** Sliding sun/moon switch. Dark is the primary experience. */
 export default function ThemeToggle({ onArtwork = false, className }: ThemeToggleProps) {
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useIsClient();
 
   const isDark = mounted ? resolvedTheme !== "light" : true;
   const label = isDark ? "Switch to light theme" : "Switch to dark theme";

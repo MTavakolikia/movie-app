@@ -30,7 +30,7 @@ export default function SiteHeader() {
   const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 30, mass: 0.4 });
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { items, ready } = useWatchlist();
+  const { items } = useWatchlist();
 
   useMotionValueEvent(scrollY, "change", (value) => {
     const next = value > 24;
@@ -90,13 +90,11 @@ export default function SiteHeader() {
         <div className={cn("ml-auto flex items-center gap-0.5 sm:gap-1.5", solid ? "text-ink" : "text-white")}>
           <Link
             href="/watchlist"
-            aria-label={
-              ready && items.length > 0 ? `Watchlist, ${items.length} saved` : "Watchlist"
-            }
+            aria-label={items.length > 0 ? `Watchlist, ${items.length} saved` : "Watchlist"}
             className={cn(ICON_LINK, "hover:text-accent")}
           >
             <LuBookmark className="size-[18px]" aria-hidden />
-            {ready && items.length > 0 && (
+            {items.length > 0 && (
               <span className="absolute top-1 right-0.5 grid min-w-4 place-items-center rounded-full bg-accent px-1 font-sans text-[9px] font-bold leading-4 text-on-accent tabular">
                 {items.length > 9 ? "9+" : items.length}
               </span>
