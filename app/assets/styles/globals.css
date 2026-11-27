@@ -341,6 +341,12 @@
   padding-left: max(var(--gutter), calc((100% - var(--max-w)) / 2));
 }
 
+/* Swiper's unlayered `.swiper { padding: 0 }` beats layered utilities,
+   so the rail gutter is declared as a compound unlayered rule. */
+.swiper.rail-pl {
+  padding-left: max(var(--gutter), calc((100% - var(--max-w)) / 2));
+}
+
 @utility rail-mask {
   mask-image: linear-gradient(to right, transparent, #000 44px, #000 calc(100% - 44px), transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, #000 44px, #000 calc(100% - 44px), transparent);
