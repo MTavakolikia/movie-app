@@ -1,20 +1,23 @@
-module.exports = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   images: {
     localPatterns: [
       {
-        pathname: '/**',
-        search: '',
+        pathname: "/**",
+        search: "",
       },
     ],
     remotePatterns: [
-
       {
-        protocol: 'https',
+        protocol: "https",
         hostname: "image.tmdb.org",
-        port: '',
+        port: "",
         pathname: "/t/p/**",
-        search: '',
+        search: "",
       },
     ],
   },
-}
+};
+
+export default nextConfig;
