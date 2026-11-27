@@ -12,8 +12,10 @@ interface NavSearchProps {
   onArtwork: boolean;
 }
 
+/* No display class here on purpose — each trigger below owns its own
+   visibility, so `hidden`/`md:` variants can't lose a CSS-order fight. */
 const TRIGGER =
-  "inline-flex size-10 cursor-pointer items-center justify-center rounded-full transition-colors duration-300 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent";
+  "size-10 cursor-pointer items-center justify-center rounded-full transition-colors duration-300 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent";
 
 /**
  * Compact search in the header. On phones it is a direct link to /search;
@@ -49,7 +51,7 @@ export default function NavSearch({ onArtwork }: NavSearchProps) {
   return (
     <div className="relative flex items-center">
       {/* Phones: straight to the search page */}
-      <Link href="/search" aria-label="Search" className={cn(TRIGGER, "md:hidden")}>
+      <Link href="/search" aria-label="Search" className={cn(TRIGGER, "inline-flex md:hidden")}>
         <FiSearch className="size-[18px]" aria-hidden />
       </Link>
 
