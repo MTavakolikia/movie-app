@@ -36,7 +36,3 @@ export function sortForEndpoint(sort: string, mediaType: MediaType): string {
 export function isKnownSort(sort: string): boolean {
   return discoverSortOptions.some((option) => option.value === sort);
 }
-
-/** Rating floors offered as one-tap chips. */
-export const ratingOptions = ["0", "6", "7", "8"] as const;
-export type RatingOption = (typeof ratingOptions)[number];

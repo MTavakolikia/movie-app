@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { LuCheck, LuRotateCcw, LuSlidersHorizontal } from "react-icons/lu";
 import type { Genre } from "@/constants/genres";
@@ -43,9 +43,13 @@ export default function BrowseFilters({ type, genres, values, basePath }: Browse
   const [pending, startTransition] = useTransition();
   const [yearDraft, setYearDraft] = useState(values.year);
 
-  useEffect(() => {
+  // Prop-synced draft — adjusted during render (React's recommended
+  // alternative to setState-in-effect).
+  const [prevYear, setPrevYear] = useState(values.year);
+  if (prevYear !== values.year) {
+    setPrevYear(values.year);
     setYearDraft(values.year);
-  }, [values.year]);
+  }
 
   const navigate = (next: BrowseFilterState) => {
     const params = new URLSearchParams();
