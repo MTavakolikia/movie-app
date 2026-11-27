@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useRouter } from "next/navigation";
 import { PopularMovie } from "@/types/popularMoviesTypes";
 import Image from 'next/image';
@@ -14,14 +14,14 @@ export default function MovieCard({ movie }: { movie: PopularMovie }) {
     return (
         <motion.div
             whileHover={{ scale: 0.95 }}
-            className="card w-[100%] sm:w-80 lg:w-96 bg-base-100 rounded-lg shadow-xl hover:scale-105 transition-transform duration-300 cursor-pointer" onClick={() => handleMovieClick()}
+            className="card w-full sm:w-80 lg:w-96 bg-base-100 rounded-lg shadow-xl hover:scale-105 transition-transform duration-300 cursor-pointer" onClick={() => handleMovieClick()}
         >
             <Image
                 src={movie.backdrop_path ? `https://image.tmdb.org/t/p/original${movie.backdrop_path || movie.poster_path}` : '/default-image.png'}
                 alt={movie?.title}
                 width={500}
                 height={300}
-                className="rounded w-full mx=[200px] object-cover"
+                className="rounded-sm w-full mx=[200px] object-cover"
                 unoptimized={process.env.NODE_ENV === 'development'}
             />
             <div className="card-body">

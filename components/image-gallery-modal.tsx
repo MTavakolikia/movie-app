@@ -13,12 +13,12 @@ export default function ImageGalleryModal({ movieGallery }: MoviePictures) {
 
     return (
         <>
-            <button className="!border bg-white text-purple-500 bg-opacity-70 hover:bg-opacity-100 rounded-xl p-2" onClick={() => setShowModal(true)}><MdImageSearch size={26} />
+            <button className="border! bg-white/70 hover:bg-white text-purple-500 rounded-xl p-2" onClick={() => setShowModal(true)}><MdImageSearch size={26} />
             </button>
             {showModal &&
                 <dialog className="modal  modal-open ">
                     <div className="modal-box w-11/12 p-0  max-w-full relative">
-                        <div className="modal-action !m-0">
+                        <div className="modal-action m-0!">
                             <form method="dialog">
                                 {movieGallery?.length > 0 ? (
                                     <MovieCarousel images={movieGallery} />

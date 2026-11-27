@@ -2,7 +2,7 @@
 import { FaMapSigns, FaCopy } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { BsFillTelephoneFill, BsGlobeAmericas } from "react-icons/bs";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useState } from "react";
 
 const ContactPage = () => {
@@ -77,7 +77,7 @@ const ContactPage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         {contactTab.map((item, index) => (
                             <div key={index} className="card w-full shadow-xl h-auto">
-                                <div className="card-body items-center flex-grow-0 text-center">
+                                <div className="card-body items-center grow-0 text-center">
                                     <h2 className="card-title">{item.icon}</h2>
                                     <p className="text-lg font-bold my-3">{item.title}</p>
                                     <div className="flex items-center justify-center">

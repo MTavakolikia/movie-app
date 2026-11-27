@@ -6,7 +6,7 @@ import { FaRegTimesCircle, FaRegUser } from "react-icons/fa"
 import { GoCodeReview } from "react-icons/go";
 
 import { Reviews } from "@/types/reviewTypes"
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image"
 
 export default function ReviewModal({ reviews }: { reviews: Reviews }) {
@@ -14,12 +14,12 @@ export default function ReviewModal({ reviews }: { reviews: Reviews }) {
 
     return (
         <>
-            <button className="!border bg-white text-purple-500 bg-opacity-70 hover:bg-opacity-100 rounded-xl p-2" onClick={() => setShowModal(true)}><GoCodeReview size={26} />
+            <button className="border! bg-white/70 hover:bg-white text-purple-500 rounded-xl p-2" onClick={() => setShowModal(true)}><GoCodeReview size={26} />
             </button>
             {showModal &&
                 <dialog className="modal  modal-open ">
                     <div className="modal-box w-11/12 p-0  max-w-full relative">
-                        <div className="modal-action !m-0 ">
+                        <div className="modal-action m-0! ">
                             <button className="absolute z-50 left-3 top-3" onClick={() => setShowModal(false)}>
                                 <FaRegTimesCircle size={26} />
                             </button>

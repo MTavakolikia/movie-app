@@ -1,4 +1,4 @@
-import { apiClient } from "./api";
+import { apiClient, describeTmdbError } from "./api";
 import { PopularMovie } from "@/types/popularMoviesTypes";
 
 export const fetchAdvanceSearch = async (param = {}, page: number = 1): Promise<PopularMovie[]> => {
@@ -13,6 +13,6 @@ export const fetchAdvanceSearch = async (param = {}, page: number = 1): Promise<
         return response.data.results;
     } catch (error) {
         console.log(error);
-        throw new Error("Failed to fetch popular movies");
+        throw new Error(`Failed to run advanced search — ${describeTmdbError(error)}`);
     }
 };

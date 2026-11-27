@@ -13,24 +13,12 @@ export default function page() {
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                     <form className="card-body">
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input type="email" placeholder="email" className="input input-bordered" required />
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input type="password" placeholder="password" className="input input-bordered" required />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
-                        </div>
-                        <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
-                        </div>
+                        <label className="label" htmlFor="email">Email</label>
+                        <input id="email" type="email" placeholder="email" className="input" required />
+                        <label className="label" htmlFor="password">Password</label>
+                        <input id="password" type="password" placeholder="password" className="input" required />
+                        <a href="#" className="label link link-hover">Forgot password?</a>
+                        <button className="btn btn-primary mt-6">Login</button>
                     </form>
                 </div>
                 <Image

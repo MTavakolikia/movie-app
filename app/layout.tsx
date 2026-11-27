@@ -16,10 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-      >
-        <ThemeProvider >
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="data-theme">
           <Navbar />
           {children}
           <Footer />

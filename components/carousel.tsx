@@ -63,8 +63,8 @@ const Carousel: React.FC<MovieSliderProps> = ({ movies }) => {
                             className="rounded-lg"
                             unoptimized={process.env.NODE_ENV === 'development'}
                         />
-                        <h3 className="text-base font-bold absolute bottom-3 left-3 drop-shadow-2xl bg-slate-600 bg-opacity-50 rounded-xl px-2 border border-slate-500">{movie.title}</h3>
-                        <span className='cursor-pointer absolute bottom-3 right-3 drop-shadow-2xl bg-slate-600 bg-opacity-50 rounded-xl px-2 border border-slate-500' onClick={() => handleMovieClick(movie.id)}>View More</span>
+                        <h3 className="text-base font-bold absolute bottom-3 left-3 drop-shadow-2xl bg-slate-600/50 rounded-xl px-2 border border-slate-500">{movie.title}</h3>
+                        <span className='cursor-pointer absolute bottom-3 right-3 drop-shadow-2xl bg-slate-600/50 rounded-xl px-2 border border-slate-500' onClick={() => handleMovieClick(movie.id)}>View More</span>
                     </div>
                 </SwiperSlide>
             ))}

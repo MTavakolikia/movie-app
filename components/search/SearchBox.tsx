@@ -27,13 +27,11 @@ export default function SearchBox() {
                 <MdContentPasteSearch size={27} />
             </button>
             <form
-                className='flex justify-between items-center input input-bordered px-5 max-w-6xl mx-auto relative h-10'
+                className='flex justify-between items-center input px-5 max-w-6xl mx-auto relative h-10'
                 onSubmit={handleSubmit}
             >
-                <div className="form-control">
-                    <input type="text" onChange={(e) => setSearch(e.target.value)}
-                        value={search} placeholder="Search keywords..." className=" w-32 md:w-auto text-sm " />
-                </div>
+                <input type="text" onChange={(e) => setSearch(e.target.value)}
+                    value={search} placeholder="Search keywords..." className=" w-32 md:w-auto text-sm " />
                 <button
                     className='text-purple-800 cursor-pointer absolute right-2 disabled:text-gray-400'
                     disabled={search === ''}

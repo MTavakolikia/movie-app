@@ -1,7 +1,7 @@
 export default function MovieByIdLoading() {
     return (
         <div className="flex animate-pulse">
-            <div className="relative w-1/2 h-[88vh] rounded ">
+            <div className="relative w-1/2 h-[88vh] rounded-sm ">
                 <div className="absolute top-5 right-5">
                     <div className="w-12 h-12  rounded-full"></div>
                 </div>
