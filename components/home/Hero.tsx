@@ -61,6 +61,8 @@ export default function Hero({ items }: { items: FeaturedItem[] }) {
   const [hovered, setHovered] = useState(false);
   const [userPaused, setUserPaused] = useState(false);
   const [trailer, setTrailer] = useState<TrailerTarget | null>(null);
+  /** Only set by manual navigation, so autoplay never spams the live region. */
+  const [announcement, setAnnouncement] = useState("");
   const reduced = useReducedMotion();
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -89,9 +91,19 @@ export default function Hero({ items }: { items: FeaturedItem[] }) {
   if (!active) return null;
 
   const slide = active;
-  const backdrop = tmdbImage(slide.item.backdropPath ?? slide.item.posterPath, "original");
   const genres = slide.genres.slice(0, 3);
-  const go = (direction: 1 | -1) => setIndex((current) => (current + direction + count) % count);
+  const announceSlide = (slideIndex: number) => {
+    const entry = items[slideIndex];
+    if (!entry) return;
+    setAnnouncement(
+      `Featured: ${entry.item.title}, ${year(entry.item.releaseDate)}. Slide ${slideIndex + 1} of ${count}.`,
+    );
+  };
+  const go = (direction: 1 | -1) => {
+    const next = (index + direction + count) % count;
+    setIndex(next);
+    announceSlide(next);
+  };
 
   return (
     <div ref={sectionRef} className="relative">
@@ -252,7 +264,10 @@ export default function Hero({ items }: { items: FeaturedItem[] }) {
                       type="button"
                       aria-current={isActive ? "true" : undefined}
                       aria-label={`${entry.item.title}`}
-                      onClick={() => setIndex(slideIndex)}
+                      onClick={() => {
+                        setIndex(slideIndex);
+                        announceSlide(slideIndex);
+                      }}
                       className={cn(
                         "group relative h-1 overflow-hidden rounded-full transition-[width,background-color] duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-black",
                         isActive ? "w-9 bg-white/20" : "w-5 bg-white/20 hover:bg-white/40",
@@ -282,9 +297,9 @@ export default function Hero({ items }: { items: FeaturedItem[] }) {
           </div>
         </motion.div>
 
-        {/* Helpers for assistive tech: the rotating text is announced on demand. */}
+        {/* Announced only when the visitor changes the slide themselves. */}
         <p className="sr-only" aria-live="polite">
-          Featured: {slide.item.title}, {year(slide.item.releaseDate)}. Slide {index + 1} of {count}.
+          {announcement}
         </p>
       </section>
 
