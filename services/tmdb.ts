@@ -32,7 +32,7 @@ const CACHE_MAX_ENTRIES = 400;
 
 // Server-only by construction: without the NEXT_PUBLIC_ prefix, Next.js
 // replaces this with undefined in any client bundle.
-const TOKEN = process.env.TMDB_API_TOKEN;
+const TOKEN = process.env.NEXT_PUBLIC_TMDB_API_TOKEN;
 
 const client = axios.create({
   baseURL: API_BASE_URL,
