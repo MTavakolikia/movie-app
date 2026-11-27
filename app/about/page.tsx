@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import Image from 'next/image';
 import React from 'react';
 import { BiSolidMessageSquareDetail } from 'react-icons/bi';
@@ -12,11 +12,11 @@ import { SiThemoviedatabase } from 'react-icons/si';
 export default function WelcomePage() {
     const technologies = [
         { name: 'React 19', icon: '/icons/react.svg' },
-        { name: 'Next.js 15', icon: '/icons/nextjs.svg' },
+        { name: 'Next.js 16', icon: '/icons/nextjs.svg' },
         { name: 'TypeScript', icon: '/icons/typescript.svg' },
         { name: 'Tailwind CSS', icon: '/icons/tailwindcss.svg' },
         { name: 'Daisy UI', icon: '/icons/daisy-ui.svg' },
-        { name: 'Framer Motion', icon: '/icons/framer-motion.svg' },
+        { name: 'Motion', icon: '/icons/framer-motion.svg' },
     ];
     const features = [
         {
@@ -85,7 +85,7 @@ export default function WelcomePage() {
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: 'spring', stiffness: 300 }}
                     >
-                        <div className="stats shadow">
+                        <div className="stats shadow-sm">
                             <div className="stat">
                                 <div className="stat-title">{feature.title}</div>
                                 <div className="stat-value text-sm">{feature.description}</div>

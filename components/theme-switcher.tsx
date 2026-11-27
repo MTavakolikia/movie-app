@@ -1,19 +1,12 @@
 "use client";
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
-  const [isChecked, setIsChecked] = useState(false);
-
-  useEffect(() => {
-    setIsChecked(theme === "dark");
-  }, [theme]);
+  const isChecked = theme === "dark";
 
   const toggleTheme = () => {
-    const newTheme = isChecked ? "light" : "dark";
-    setTheme(newTheme);
-    setIsChecked(!isChecked);
+    setTheme(isChecked ? "light" : "dark");
   };
 
   return (

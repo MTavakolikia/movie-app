@@ -43,7 +43,7 @@ export default async function MovieDetails({
 
     return (<div>
         <div className="flex ">
-            <div className="relative w-full h-[88vh] rounded">
+            <div className="relative w-full h-[88vh] rounded-sm">
                 <div className="absolute top-5 right-5">
                     <ImageGalleryModal movieGallery={movieGallery.backdrops} />
                 </div>
