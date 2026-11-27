@@ -1,52 +1,46 @@
-'use client';
+"use client";
 
-import { motion } from 'motion/react';
+import { useEffect } from "react";
+import { LuRefreshCw } from "react-icons/lu";
+import Button from "@/components/ui/Button";
+
+/* ============================================================
+   Route error boundary — a snapped reel, not a stack trace.
+   ============================================================ */
 
 export default function Error({
-    error,
-    reset,
+  error,
+  reset,
 }: {
-    error: Error & { digest?: string };
-    reset: () => void;
+  error: Error & { digest?: string };
+  reset: () => void;
 }) {
+  useEffect(() => {
+    console.error("[route error]", error);
+  }, [error]);
 
-    return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-base-200 p-4">
-            <motion.div
-                initial={{ opacity: 0, y: -50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-center"
-            >
-                <h1 className="text-6xl font-bold text-error mb-4">Oops!</h1>
-                <p className="text-2xl text-base-content mb-8">
-                    Something went wrong. Please try again.
-                </p>
-                <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={reset}
-                    className="btn btn-primary"
-                >
-                    Try Again
-                </motion.button>
-            </motion.div>
-
-            {/* Optional: Display error details for debugging */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className="mt-8 bg-base-100 p-6 rounded-lg shadow-lg"
-            >
-                <h2 className="text-xl font-semibold text-error mb-4">Error Details</h2>
-                <pre className="text-sm text-base-content whitespace-pre-wrap">
-                    {error.message}
-                </pre>
-                {error.digest && (
-                    <p className="text-sm text-base-content mt-2">Digest: {error.digest}</p>
-                )}
-            </motion.div>
-        </div>
-    );
+  return (
+    <section className="grain relative flex min-h-[92svh] flex-col items-center justify-center overflow-hidden px-6 text-center">
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_0%,rgb(232_185_84/0.09),transparent_65%)]"
+      />
+      <div className="relative flex max-w-lg flex-col items-center">
+        <p className="eyebrow mb-4">Something went wrong</p>
+        <h1 className="font-display text-5xl leading-[0.95] tracking-[-0.02em] text-ink sm:text-7xl">
+          The reel snapped.
+        </h1>
+        <p className="mt-5 text-sm leading-relaxed text-muted sm:text-base">
+          An unexpected error interrupted the screening. It is usually temporary — run it back and the show should go on.
+        </p>
+        <Button variant="primary" size="lg" className="mt-9" onClick={reset}>
+          <LuRefreshCw className="size-4" aria-hidden />
+          Run it back
+        </Button>
+        {error.digest && (
+          <p className="mt-6 text-[11px] text-faint tabular">Reference: {error.digest}</p>
+        )}
+      </div>
+    </section>
+  );
 }
