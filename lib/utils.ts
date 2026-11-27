@@ -4,7 +4,12 @@
 
 export type ImageSize = "w92" | "w154" | "w185" | "w342" | "w500" | "w780" | "w1280" | "original";
 
-const IMG = "https://image.tmdb.org/t/p";
+/**
+ * Image host override — must be NEXT_PUBLIC so server and client render
+ * identical URLs. Useful for blocked networks or image mirrors; defaults
+ * to TMDb when unset.
+ */
+const IMG = process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE?.replace(/\/+$/, "") || "https://image.tmdb.org/t/p";
 
 /** Builds a TMDb image URL, or null when there is no artwork. */
 export function tmdbImage(path: string | null | undefined, size: ImageSize = "w500"): string | null {
