@@ -5,14 +5,15 @@ import { cn } from "@/lib/cn";
 
 interface ExpandableTextProps {
   text: string;
-  /** Lines to show while collapsed (4, 6 or 8). */
-  lines?: 4 | 6 | 8;
+  /** Lines to show while collapsed (4, 5, 6 or 8). */
+  lines?: 4 | 5 | 6 | 8;
   threshold?: number;
   className?: string;
 }
 
-const CLAMP: Record<4 | 6 | 8, string> = {
+const CLAMP: Record<4 | 5 | 6 | 8, string> = {
   4: "line-clamp-4",
+  5: "line-clamp-5",
   6: "line-clamp-6",
   8: "line-clamp-8",
 };
